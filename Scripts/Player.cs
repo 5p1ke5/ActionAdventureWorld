@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     public float turningSpeed = 60f;
     public float jumpPower = 5f;
 
-    public Sprite walkSprite;
-
     bool jump;
 
     private Rigidbody rigidBody;
@@ -22,9 +20,6 @@ public class Player : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         cam = Camera.current;
-        sprite = transform.GetChild(0).gameObject;
-        spriteRenderer = sprite.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = walkSprite;
     }
 
     // Update is called once per frame
