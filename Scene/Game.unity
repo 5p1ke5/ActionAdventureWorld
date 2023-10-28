@@ -2022,6 +2022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261dd46634b2fe341b00f24011d34004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 4
+  jumpHeight: 3
+  gravityValue: -9.81
 --- !u!65 &9022421897364096159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2067,7 +2070,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
