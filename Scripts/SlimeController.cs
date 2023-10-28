@@ -1,40 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SlimeController : MonoBehaviour
 {
+    public int hp = 2;
     public float moveSpeed = 2f;
     public float detectRadius = 10f;
     public float gravityValue = -10f;
     public float dragValue = 0.1f;
+    public float flickerSeconds = 3;
 
     private CharacterController controller;
+    private GameObject childObject;
     private Animator animator;
-    private GameObject childRenderer;
+    private SpriteRenderer renderer;
     private Transform target;
 
     private bool grounded;
     private Vector3 velocity;
+    private float flicker = 0;
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-        childRenderer = transform.GetChild(0).gameObject;
-        animator = childRenderer.GetComponent<Animator>();
+        childObject = transform.GetChild(0).gameObject;
+        animator = childObject.GetComponent<Animator>();
+        renderer = childObject.GetComponent<SpriteRenderer>();
         target = GameObject.FindWithTag("Player").transform; 
     }
 
     void Update()
     {
+        //If the object is grounded cancels gravity.
         grounded = controller.isGrounded;
         if (grounded && velocity.y < 0)
         {
             velocity.y = 0f;
         }
 
-        childRenderer.transform.LookAt(Camera.main.transform.position, Vector3.up);
+        //Always points sprite at camera.
+        childObject.transform.LookAt(Camera.main.transform.position, Vector3.up);
 
+        //If the player is close enough moves towards them.
         float distance = Vector3.Distance(target.position, transform.position);
         
         Vector3 vector = Vector3.zero;
@@ -44,11 +53,43 @@ public class SlimeController : MonoBehaviour
             controller.Move(vector);
         }
 
-
+        //Use physics to move character.
         velocity.y += gravityValue * Time.deltaTime;
+
+        //Applies friction
+        if (Math.Abs(velocity.x) > dragValue)
+        {
+            int sign = Math.Sign(velocity.x);
+            velocity.x -= dragValue * sign;
+        }
+        else { velocity.x = 0; }
+
+        if (Math.Abs(velocity.x) > dragValue)
+        {
+            int sign = Math.Sign(velocity.z);
+            velocity.z -= dragValue * sign;
+        }
+        else { velocity.z = 0; }
+
         controller.Move(velocity * Time.deltaTime);
 
+        //Animation things
         animator.SetFloat("moveSpeed", vector.magnitude);
+
+        //Fickers after taking damage
+        if (flicker > 0)
+        {
+            flicker -= Time.deltaTime;
+
+            if (flicker > 0)
+            {
+                renderer.enabled = !renderer.enabled;
+            }
+            else //Always reset renderer at the end of the flicker duration.
+            {
+                renderer.enabled = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,9 +97,19 @@ public class SlimeController : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "PlayerHurtbox":
-                Vector3 knockback = (other.transform.position - transform.position).normalized * 5000 * Time.deltaTime;
-                Debug.Log("Enemy hit!" + knockback.ToString());
-                velocity += knockback * Time.deltaTime;
+                hp--;
+                Debug.Log("Hit!");
+
+                if (hp > 0)
+                {
+                    Vector3 knockback = (other.transform.position - transform.position).normalized * Time.deltaTime * -500;
+                    velocity += knockback;
+                    flicker = flickerSeconds * Time.deltaTime;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
                 break;
             default:
                 break;

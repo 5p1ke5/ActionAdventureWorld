@@ -288,3 +288,5 @@ MonoBehaviour:
   moveSpeed: 2
   detectRadius: 10
   gravityValue: -10
+  dragValue: 0.1
+  flickerSeconds: 5

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{ 
+{
     public float playerSpeed = 4.0f; //How fast the player moves.
     private int runMod = 2; //Multiplier to movement speed while run button is held down
     private int jumpMod = 2; //The player's gravity is divided by this while the jump button is held down.
@@ -17,9 +17,10 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
 
-    //privte physics variables.
+    //private variables governing player movement.
     private Vector3 playerVelocity;
     private bool grounded;
+    private bool punch = false;
 
     private void Start()
     {
@@ -57,12 +58,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Attack
-        if (Input.GetButtonDown("Fire1"))
+        //Being in an attacking state locks you out of some stuff.
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
         {
-            GameObject newHurtbox = Instantiate(hurtbox, transform);
-            newHurtbox.transform.parent = null;
-
+            punch = Input.GetButtonDown("Fire1");
+            if (punch)
+            {
+                GameObject newHurtbox = Instantiate(hurtbox, transform);
+                newHurtbox.transform.parent = null;
+            }
         }
 
         //Additionally if the jump button is being held down offsets gravity, allowing the player to jump higher by holding the jump button.
@@ -76,6 +80,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("horizontal", Input.GetAxis("Horizontal"));
         animator.SetFloat("vertical", Input.GetAxis("Vertical"));
         animator.SetBool("grounded", grounded);
+        animator.SetBool("punch", punch);
         
     }
 
@@ -84,7 +89,6 @@ public class PlayerController : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "EnemyHurtbox":
-                Debug.Log("Enemy got you!");
                 break;
             default:
                 break;
