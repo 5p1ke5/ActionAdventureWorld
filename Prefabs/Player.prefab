@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8082381330161523622}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   playerSpeed: 4
   jumpHeight: 3
   gravityValue: -9.81
+  hurtbox: {fileID: 3322480319475257598, guid: 546d36dd01e34054c860e25f84ec5e79, type: 3}
 --- !u!143 &8082381330161523622
 CharacterController:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 7672475186855876640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.185, z: 0}
+  m_LocalPosition: {x: 0, y: 0.279, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
