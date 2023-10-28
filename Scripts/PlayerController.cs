@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
     public float gravityValue = -10f;
 
     private CharacterController controller;
+    private Animator animator;
     private Vector3 playerVelocity;
     private bool grounded;
 
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     void Update()
@@ -52,5 +54,12 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y += (gravityValue / gravOffset) * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+
+        //Animation things
+        animator.SetFloat("horizontal", Input.GetAxis("Horizontal"));
+        animator.SetFloat("vertical", Input.GetAxis("Vertical"));
+        animator.SetBool("grounded", grounded);
+
     }
 }
