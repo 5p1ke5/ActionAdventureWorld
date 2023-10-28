@@ -60,6 +60,5 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("horizontal", Input.GetAxis("Horizontal"));
         animator.SetFloat("vertical", Input.GetAxis("Vertical"));
         animator.SetBool("grounded", grounded);
-
     }
 }
