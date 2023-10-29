@@ -99,9 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 4
+  runMod: 2
+  jumpMod: 2
   jumpHeight: 3
   gravityValue: -9.81
-  hurtbox: {fileID: 3322480319475257598, guid: 546d36dd01e34054c860e25f84ec5e79, type: 3}
+  hp: 3
+  flickerSeconds: 3
+  hurtboxPrefab: {fileID: 3322480319475257598, guid: 546d36dd01e34054c860e25f84ec5e79,
+    type: 3}
+  dragValue: 0.1
 --- !u!143 &8082381330161523622
 CharacterController:
   m_ObjectHideFlags: 0

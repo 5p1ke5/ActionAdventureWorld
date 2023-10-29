@@ -98,7 +98,6 @@ public class SlimeController : MonoBehaviour
         {
             case "PlayerHurtbox":
                 hp--;
-                Debug.Log("Hit!");
 
                 if (hp > 0)
                 {
