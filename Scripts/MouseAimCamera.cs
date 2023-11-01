@@ -17,7 +17,6 @@ public class MouseAimCamera : MonoBehaviour
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         float horizontal = Input.GetAxis("Mouse X") * rotationSpeed;

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SlimeController : MonoBehaviour
 {
-    public int hp = 2;
+    public int hp = 2; 
     public float moveSpeed = 2f;
     public float detectRadius = 10f;
     public float gravityValue = -10f;
@@ -17,6 +18,7 @@ public class SlimeController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer renderer;
     private Transform target;
+    private AudioSource audioSource;
 
     private bool grounded;
     private Vector3 velocity;
@@ -28,7 +30,8 @@ public class SlimeController : MonoBehaviour
         childObject = transform.GetChild(0).gameObject;
         animator = childObject.GetComponent<Animator>();
         renderer = childObject.GetComponent<SpriteRenderer>();
-        target = GameObject.FindWithTag("Player").transform; 
+        target = GameObject.FindWithTag("Player").transform;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -96,8 +99,10 @@ public class SlimeController : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
+            //If it collides with a hurtbox made by the player takes damage and maybe destroys self.
             case "PlayerHurtbox":
                 hp--;
+                audioSource.PlayOneShot(audioSource.clip);
 
                 if (hp > 0)
                 {
@@ -108,6 +113,12 @@ public class SlimeController : MonoBehaviour
                 else
                 {
                     Destroy(gameObject);
+                    int slimes = GameObject.FindGameObjectsWithTag("Enemy").Length;
+                    if (slimes == 1)
+                    {
+                        SceneManager.LoadScene("WinMenu");
+                        Cursor.lockState = CursorLockMode.None;
+                    }
                 }
                 break;
             default:

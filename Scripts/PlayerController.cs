@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,20 +14,22 @@ public class PlayerController : MonoBehaviour
     public int jumpMod = 2; //The player's gravity is divided by this while the jump button is held down.
     public float jumpHeight = 1f; //How high you jump
     public float gravityValue = -10f; //How fast the player is pulled down
-    public int hp = 3;
-    public float flickerSeconds = 3;
+    public int hp = 3; //How much HP you have.
+    public float flickerSeconds = 3; //How long invulnerability flicker lasts.
 
     //Components that are initialized in fields.
     public GameObject hurtboxPrefab;
+    public TextMeshProUGUI lifeScore;
 
     //Components we'll get during the starting event
     private CharacterController controller;
     private GameObject childObject;
     private Animator animator;
     private SpriteRenderer renderer;
+    private AudioSource audioSource;
 
     //private variables governing player movement.
-    private Vector3 playerVelocity;
+    private Vector3 playerVelocity; //vector used to control movement by outside forces.
     private bool grounded;
     private float flicker = 0;
     public float dragValue = 0.1f;
@@ -38,6 +42,10 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         animator = childObject.GetComponent<Animator>();
         renderer = childObject.GetComponent<SpriteRenderer>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+
+        lifeScore.text = "Life: " + hp;
+        //slimeScore.text = "Points: " + score;
     }
 
     void Update()
@@ -72,6 +80,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
                 
+            //Punches, creates a hurtbox and positions it.
             punch = Input.GetButtonDown("Fire1");
             if (punch)
             {
@@ -145,22 +154,28 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Different collision types are handled here.
         switch (other.gameObject.tag)
         {
             case "EnemyHurtbox":
-                if (flicker <= 0)
+                if (flicker <= 0) //Cant take damage if flickering.
                 {
+                    audioSource.PlayOneShot(audioSource.clip);
                     hp--;
-                    Debug.Log(hp);
+                    lifeScore.text = "Life: " + hp;
+
+                    //Take damage
                     if (hp > 0)
                     {
+                        //Gets vector to use to knock the player back and then adds that to velocity to make them knock back during Update.
                         Vector3 knockback = (other.transform.position - transform.position).normalized * Time.deltaTime * -500;
                         playerVelocity += knockback;
                         flicker = flickerSeconds * Time.deltaTime;
                     }
-                    else
+                    else //If HP < 0 kills you and you lose the game.
                     {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                        Cursor.lockState = CursorLockMode.None;
+                        SceneManager.LoadScene("LoseMenu");
                     }
                 }
                 break;
