@@ -90,22 +90,6 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //Fickers after taking damage
-        if (flicker > 0)
-        {
-            flicker -= Time.deltaTime;
-
-            if (flicker > 0)
-            {
-                renderer.enabled = !renderer.enabled;
-            }
-            else //Always reset renderer at the end of the flicker duration.
-            {
-                renderer.enabled = true;
-            }
-        }
-
-
         //Additionally if the jump button is being held down offsets gravity, allowing the player to jump higher by holding the jump button.
         int gravOffset = Input.GetButton("Jump") ? jumpMod : 1;
 
