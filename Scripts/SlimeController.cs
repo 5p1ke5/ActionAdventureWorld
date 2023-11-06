@@ -95,29 +95,32 @@ public class SlimeController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         switch (other.gameObject.tag)
         {
             //If it collides with a hurtbox made by the player takes damage and maybe destroys self.
             case "PlayerHurtbox":
-                hp--;
-                audioSource.PlayOneShot(audioSource.clip);
+                if (flicker <= 0)
+                {
+                    hp--;
+                    audioSource.PlayOneShot(audioSource.clip);
 
-                if (hp > 0)
-                {
-                    Vector3 knockback = (other.transform.position - transform.position).normalized * Time.deltaTime * -500;
-                    velocity += knockback;
-                    flicker = flickerSeconds * Time.deltaTime;
-                }
-                else
-                {
-                    Destroy(gameObject);
-                    int slimes = GameObject.FindGameObjectsWithTag("Enemy").Length;
-                    if (slimes == 1)
+                    if (hp > 0)
                     {
-                        SceneManager.LoadScene("WinMenu");
-                        Cursor.lockState = CursorLockMode.None;
+                        Vector3 knockback = (other.transform.position - transform.position).normalized * Time.deltaTime * -500;
+                        velocity += knockback;
+                        flicker = flickerSeconds * Time.deltaTime;
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                        int slimes = GameObject.FindGameObjectsWithTag("Enemy").Length;
+                        if (slimes == 1)
+                        {
+                            SceneManager.LoadScene("WinMenu");
+                            Cursor.lockState = CursorLockMode.None;
+                        }
                     }
                 }
                 break;
