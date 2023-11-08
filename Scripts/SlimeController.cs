@@ -9,8 +9,6 @@ public class SlimeController : MonoBehaviour
     public int hp = 2; 
     public float moveSpeed = 2f;
     public float detectRadius = 10f;
-    public float gravityValue = -10f;
-    public float dragValue = 0.1f;
     public float flickerSeconds = 3;
 
     private CharacterController controller;
@@ -19,9 +17,8 @@ public class SlimeController : MonoBehaviour
     private SpriteRenderer renderer;
     private Transform target;
     private AudioSource audioSource;
+    private PlatformerPhysics physics;
 
-    private bool grounded;
-    private Vector3 velocity;
     private float flicker = 0;
 
     private void Start()
@@ -32,17 +29,11 @@ public class SlimeController : MonoBehaviour
         renderer = childObject.GetComponent<SpriteRenderer>();
         target = GameObject.FindWithTag("Player").transform;
         audioSource = gameObject.GetComponent<AudioSource>();
+        physics = gameObject.GetComponent<PlatformerPhysics>();
     }
 
     void Update()
     {
-        //If the object is grounded cancels gravity.
-        grounded = controller.isGrounded;
-        if (grounded && velocity.y < 0)
-        {
-            velocity.y = 0f;
-        }
-
         //Always points sprite at camera.
         childObject.transform.LookAt(Camera.main.transform.position, Vector3.up);
 
@@ -55,27 +46,6 @@ public class SlimeController : MonoBehaviour
             vector = (target.position - transform.position).normalized * moveSpeed * Time.deltaTime;
             controller.Move(vector);
         }
-
-        //Use physics to move character.
-        velocity.y += gravityValue * Time.deltaTime;
-
-        //Applies friction
-        if (Math.Abs(velocity.x) > dragValue)
-        {
-            int sign = Math.Sign(velocity.x);
-            velocity.x -= dragValue * sign;
-        }
-        else { velocity.x = 0; }
-
-        if (Math.Abs(velocity.x) > dragValue)
-        {
-            int sign = Math.Sign(velocity.z);
-            velocity.z -= dragValue * sign;
-        }
-        else { velocity.z = 0; }
-
-        controller.Move(velocity * Time.deltaTime);
-
         //Animation things
         animator.SetFloat("moveSpeed", vector.magnitude);
 
@@ -109,7 +79,7 @@ public class SlimeController : MonoBehaviour
                     if (hp > 0)
                     {
                         Vector3 knockback = (other.transform.position - transform.position).normalized * Time.deltaTime * -500;
-                        velocity += knockback;
+                        physics.velocity += knockback;
                         flicker = flickerSeconds * Time.deltaTime;
                     }
                     else

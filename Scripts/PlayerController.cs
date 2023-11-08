@@ -52,10 +52,6 @@ public class PlayerController : MonoBehaviour
         ///Physics things.
         //If the controller is grounded sets vertical speed to 0.
         grounded = controller.isGrounded;
-        //if (grounded && velocity.y < 0)
-        //{
-        //    velocity.y = 0f;
-        //}
 
         //Being in an attacking state locks you out of some stuff.
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
@@ -94,26 +90,6 @@ public class PlayerController : MonoBehaviour
         {
             physics.velocity.y += gravOffset;
         }
-
-        //velocity.y += (gravityValue / gravOffset) * Time.deltaTime;
-
-        //Applies friction
-        //if (Math.Abs(velocity.x) > dragValue)
-        //{
-        //    int sign = Math.Sign(velocity.x);
-        //    velocity.x -= dragValue * sign;
-        //}
-        //else { velocity.x = 0; }
-
-        //if (Math.Abs(velocity.x) > dragValue)
-        //{
-        //    int sign = Math.Sign(velocity.z);
-        //    velocity.z -= dragValue * sign;
-        //}
-        //else { velocity.z = 0; }
-
-        //controller.Move(velocity * Time.deltaTime);
-
 
         ///Animation things
         //Fickers after taking damage
