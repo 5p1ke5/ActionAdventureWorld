@@ -6412,40 +6412,10 @@ PrefabInstance:
       propertyPath: lifeScore
       value: 
       objectReference: {fileID: 830991939}
-    - target: {fileID: 1433547167232586503, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      propertyPath: gravOffset
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1433547167232586503, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      propertyPath: jumpHeight
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1433547167232586503, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      propertyPath: flickerSeconds
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1727870334092980939, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5095124321372208271, guid: 86d2c12f1eea46246b4ee7dc54d16625,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8082381330161523622, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9167419074964457685, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6453,8 +6423,8 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5095124321372208271, guid: 86d2c12f1eea46246b4ee7dc54d16625,
         type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 5981941594265497318}
+      insertIndex: 5
+      addedObject: {fileID: 5981941594265497322}
   m_SourcePrefab: {fileID: 100100000, guid: 86d2c12f1eea46246b4ee7dc54d16625, type: 3}
 --- !u!1 &5981941594265497309 stripped
 GameObject:
@@ -6462,7 +6432,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3392053947299649284}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5981941594265497318
+--- !u!114 &5981941594265497322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6471,12 +6441,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5981941594265497309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3462e00e7c7d045963c948d3847e9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 24da8107e7ead714a80feb0e75cecb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityValue: -10
-  dragValue: 0.1
-  velocity: {x: 0, y: 0, z: 0}
+  hp: 0
+  flickerSeconds: 3
+  flicker: 0
+  lifeScore: {fileID: 830991939}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
