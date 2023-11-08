@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 7625799250334662496}
   - component: {fileID: 155208124993392119}
   - component: {fileID: 8044446167997015936}
+  - component: {fileID: 8705806521873197303}
   - component: {fileID: 523222003839658935}
   - component: {fileID: 4113748729116918011}
   m_Layer: 0
@@ -287,10 +288,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57465edd296d9bb42ab182c21696c74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
   moveSpeed: 2
   detectRadius: 10
-  flickerSeconds: 5
+--- !u!114 &8705806521873197303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052069926738940447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7612dfd7330933144b69cd88f40b9996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2
+  flickerSeconds: 3
+  flicker: 0
 --- !u!114 &523222003839658935
 MonoBehaviour:
   m_ObjectHideFlags: 0
