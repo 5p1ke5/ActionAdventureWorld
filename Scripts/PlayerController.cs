@@ -11,9 +11,8 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed = 4.0f; //How fast the player moves.
     public int runMod = 2; //Multiplier to movement speed while run button is held down
-    public int jumpMod = 2; //The player's gravity is divided by this while the jump button is held down.
+    public float gravOffset = 0.04f; //Offsets gravity while falling, letting the player jump higher while the jump button is held.
     public float jumpHeight = 1f; //How high you jump
-    public float gravityValue = -10f; //How fast the player is pulled down
     public int hp = 3; //How much HP you have.
     public float flickerSeconds = 3; //How long invulnerability flicker lasts.
 
@@ -27,12 +26,12 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer renderer;
     private AudioSource audioSource;
+    private PlatformerPhysics physics;
 
     //private variables governing player movement.
-    private Vector3 playerVelocity; //vector used to control movement by outside forces.
+    //private Vector3 velocity; //vector used to control movement by outside forces.
     private bool grounded;
     private float flicker = 0;
-    public float dragValue = 0.1f;
     private bool punch = false;
 
     private void Start()
@@ -43,9 +42,9 @@ public class PlayerController : MonoBehaviour
         animator = childObject.GetComponent<Animator>();
         renderer = childObject.GetComponent<SpriteRenderer>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        physics = gameObject.GetComponent<PlatformerPhysics>();
 
         lifeScore.text = "Life: " + hp;
-        //slimeScore.text = "Points: " + score;
     }
 
     void Update()
@@ -53,10 +52,10 @@ public class PlayerController : MonoBehaviour
         ///Physics things.
         //If the controller is grounded sets vertical speed to 0.
         grounded = controller.isGrounded;
-        if (grounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
+        //if (grounded && velocity.y < 0)
+        //{
+        //    velocity.y = 0f;
+        //}
 
         //Being in an attacking state locks you out of some stuff.
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
@@ -76,7 +75,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (grounded)
                 {
-                    playerVelocity.y += Mathf.Sqrt(jumpHeight * -1f * gravityValue);
+                    physics.velocity.y = Mathf.Sqrt(jumpHeight * -1f * physics.gravityValue);
                 }
             }
                 
@@ -90,27 +89,30 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //Additionally if the jump button is being held down offsets gravity, allowing the player to jump higher by holding the jump button.
-        int gravOffset = Input.GetButton("Jump") ? jumpMod : 1;
+        //If the jump button is being held down offsets gravity, allowing the player to jump higher by holding the jump button.
+        if (Input.GetButton("Jump"))
+        {
+            physics.velocity.y += gravOffset;
+        }
 
-        playerVelocity.y += (gravityValue / gravOffset) * Time.deltaTime;
+        //velocity.y += (gravityValue / gravOffset) * Time.deltaTime;
 
         //Applies friction
-        if (Math.Abs(playerVelocity.x) > dragValue)
-        {
-            int sign = Math.Sign(playerVelocity.x);
-            playerVelocity.x -= dragValue * sign;
-        }
-        else { playerVelocity.x = 0; }
+        //if (Math.Abs(velocity.x) > dragValue)
+        //{
+        //    int sign = Math.Sign(velocity.x);
+        //    velocity.x -= dragValue * sign;
+        //}
+        //else { velocity.x = 0; }
 
-        if (Math.Abs(playerVelocity.x) > dragValue)
-        {
-            int sign = Math.Sign(playerVelocity.z);
-            playerVelocity.z -= dragValue * sign;
-        }
-        else { playerVelocity.z = 0; }
+        //if (Math.Abs(velocity.x) > dragValue)
+        //{
+        //    int sign = Math.Sign(velocity.z);
+        //    velocity.z -= dragValue * sign;
+        //}
+        //else { velocity.z = 0; }
 
-        controller.Move(playerVelocity * Time.deltaTime);
+        //controller.Move(velocity * Time.deltaTime);
 
 
         ///Animation things
@@ -153,7 +155,7 @@ public class PlayerController : MonoBehaviour
                     {
                         //Gets vector to use to knock the player back and then adds that to velocity to make them knock back during Update.
                         Vector3 knockback = (other.transform.position - transform.position).normalized * Time.deltaTime * -500;
-                        playerVelocity += knockback;
+                        physics.velocity += knockback;
                         flicker = flickerSeconds * Time.deltaTime;
                     }
                     else //If HP < 0 kills you and you lose the game.
