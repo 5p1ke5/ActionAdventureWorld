@@ -13,7 +13,6 @@ public class SlimeController : MonoBehaviour
     private GameObject childObject;
     private Animator animator;
     private Transform target;
-    private PlatformerPhysics physics;
 
 
     private void Start()
@@ -22,7 +21,6 @@ public class SlimeController : MonoBehaviour
         childObject = transform.GetChild(0).gameObject;
         animator = childObject.GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
-        physics = gameObject.GetComponent<PlatformerPhysics>();
     }
 
     void Update()

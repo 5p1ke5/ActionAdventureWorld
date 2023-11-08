@@ -6444,7 +6444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24da8107e7ead714a80feb0e75cecb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 3
   flickerSeconds: 3
   flicker: 0
   lifeScore: {fileID: 830991939}
