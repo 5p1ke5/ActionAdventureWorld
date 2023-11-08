@@ -6407,7 +6407,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1433547167232586503, guid: 86d2c12f1eea46246b4ee7dc54d16625,
+    - target: {fileID: 1280496384961268684, guid: 86d2c12f1eea46246b4ee7dc54d16625,
         type: 3}
       propertyPath: lifeScore
       value: 
@@ -6420,11 +6420,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5095124321372208271, guid: 86d2c12f1eea46246b4ee7dc54d16625,
-        type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 5981941594265497322}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86d2c12f1eea46246b4ee7dc54d16625, type: 3}
 --- !u!1 &5981941594265497309 stripped
 GameObject:
@@ -6432,22 +6428,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3392053947299649284}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5981941594265497322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5981941594265497309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24da8107e7ead714a80feb0e75cecb04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 3
-  flickerSeconds: 3
-  flicker: 0
-  lifeScore: {fileID: 830991939}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
