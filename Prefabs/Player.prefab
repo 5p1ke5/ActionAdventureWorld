@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1727870334092980939}
   - component: {fileID: 1433547167232586503}
   - component: {fileID: 3573651335198701390}
+  - component: {fileID: 1280496384961268684}
   - component: {fileID: 8082381330161523622}
   - component: {fileID: 9167419074964457685}
   m_Layer: 0
@@ -108,7 +109,6 @@ MonoBehaviour:
   flickerSeconds: 4
   hurtboxPrefab: {fileID: 3322480319475257598, guid: 546d36dd01e34054c860e25f84ec5e79,
     type: 3}
-  lifeScore: {fileID: 0}
 --- !u!114 &3573651335198701390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +124,22 @@ MonoBehaviour:
   gravityValue: -10
   dragValue: 0.1
   velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &1280496384961268684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095124321372208271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24da8107e7ead714a80feb0e75cecb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+  flickerSeconds: 3
+  flicker: 0
+  lifeScore: {fileID: 0}
 --- !u!143 &8082381330161523622
 CharacterController:
   m_ObjectHideFlags: 0
