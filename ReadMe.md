@@ -1,7 +1,8 @@
 
 How To Install A New Build:
 1. Go to the google drive and get it from the builds folder. Unzip it to wherever.
-2. See 'How to Pull Changes' to pull any incoming changes.
+2. You don't need to clone or anyhting, the .git folder is already in the 'Repo' folder.
+3. See 'How to Pull Changes' to pull any incoming changes.
 
 Changes to this project are made in two halves.
 
