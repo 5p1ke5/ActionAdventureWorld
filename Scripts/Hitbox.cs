@@ -34,4 +34,34 @@ abstract public class Hitbox : MonoBehaviour
             }
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+
+        switch (other.gameObject.tag)
+        {
+            case "Spring":
+                PlatformerPhysics platformerPhysics = gameObject.GetComponent<PlatformerPhysics>();
+                Spring spring = other.gameObject.GetComponent<Spring>();
+                if (spring == null) 
+                {
+                    break;
+                }
+
+                spring.Bounce(); //Makes the spring animate
+                if (platformerPhysics != null)
+                {
+                    platformerPhysics.velocity = spring.bounceVelocity;
+                }
+                else
+                {
+                    Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.AddForce(spring.bounceVelocity);
+                    }
+                }
+                break;
+        }
+    }
 }

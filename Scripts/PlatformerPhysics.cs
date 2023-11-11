@@ -42,7 +42,7 @@ public class PlatformerPhysics : MonoBehaviour
         }
         else { velocity.x = 0; }
 
-        if (Math.Abs(velocity.x) > dragValue)
+        if (Math.Abs(velocity.z) > dragValue)
         {
             int sign = Math.Sign(velocity.z);
             velocity.z -= dragValue * sign;

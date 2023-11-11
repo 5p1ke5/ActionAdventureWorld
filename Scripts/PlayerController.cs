@@ -26,9 +26,12 @@ public class PlayerController : MonoBehaviour
     private PlatformerPhysics physics;
 
     //private variables governing player movement.
-    //private Vector3 velocity; //vector used to control movement by outside forces.
     private bool grounded;
     private bool punch = false;
+
+    //Starting position values for reset
+    private Vector3 startPos;
+    private int minY = -30;
 
     private void Start()
     {
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
         animator = childObject.GetComponent<Animator>();
         physics = gameObject.GetComponent<PlatformerPhysics>();
 
+        //Set start position.
+        startPos = transform.position;
     }
 
     void Update()
@@ -88,5 +93,9 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("grounded", grounded);
         animator.SetBool("punch", punch);
         
+        if (transform.position.y < minY)
+        {
+            transform.position = startPos;
+        }
     }
 }
