@@ -13,7 +13,7 @@ public class NPCDialogueSystem : MonoBehaviour
     {
         // If statement so if player is in the detection range and presses F on NPC
         // Then Dialogue print statement in console is shown for now
-       if(playerDetection && Input.GetKeyDown(KeyCode.F))
+       if(playerDetection)
        {
         print("Dialogue Started!");
        } 
@@ -22,7 +22,7 @@ public class NPCDialogueSystem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     { 
         // if OnTrigger detects the Player, then Player Detection is set to true
-        if(other.name == "Player")
+        if(other.tag == "Player")
         {
             playerDetection = true;
         }
