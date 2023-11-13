@@ -49,19 +49,24 @@ abstract public class Hitbox : MonoBehaviour
                 }
 
                 spring.Bounce(); //Makes the spring animate
-                if (platformerPhysics != null)
+                if (platformerPhysics)
                 {
                     platformerPhysics.velocity = spring.bounceVelocity;
                 }
-                else
-                {
-                    Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-                    if (rb != null)
-                    {
-                        rb.AddForce(spring.bounceVelocity);
-                    }
-                }
                 break;
         }
+    }
+
+    public void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.gameObject.GetComponent<Rigidbody>();
+        if (!rb || rb.isKinematic)
+        {
+            return;
+        }
+
+
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        rb.velocity = pushDir * 2/rb.mass;
     }
 }

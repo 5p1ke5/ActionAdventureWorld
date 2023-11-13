@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("grounded", grounded);
         animator.SetBool("punch", punch);
         
+        //If the player is too low (has fallen offstage) resets their position to where they started.
         if (transform.position.y < minY)
         {
             transform.position = startPos;
