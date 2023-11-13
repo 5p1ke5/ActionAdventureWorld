@@ -8,7 +8,7 @@ public class MouseAimCamera : MonoBehaviour
     public GameObject target;
     public float rotationSpeed = 5;
     public float maxZoom = -10;
-    public float minZoom = -2;
+    public float minZoom = -1;
 
     Vector3 offset;
 
@@ -34,6 +34,7 @@ public class MouseAimCamera : MonoBehaviour
 
         offset.z = Math.Max(maxZoom, offset.z);
         offset.z = Math.Min(minZoom, offset.z);
+
 
         transform.LookAt(target.transform);
     }
