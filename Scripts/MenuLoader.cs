@@ -18,6 +18,12 @@ public static class MenuLoader
             case MenuName.Lose:
                 SceneManager.LoadScene("LoseMenu");
                 break;
+            case MenuName.Pause:
+                SceneManager.LoadScene("PauseMenu");
+                break;
+            case MenuName.Resume:
+                Time.timeScale = 1;
+                break;
         }
 
     }
@@ -26,5 +32,7 @@ public enum MenuName
 {
     Main,
     Lose,
-    Play
+    Play,
+    Pause,
+    Resume
 }
