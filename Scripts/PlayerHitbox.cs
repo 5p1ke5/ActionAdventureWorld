@@ -41,7 +41,7 @@ public class PlayerHitbox : Hitbox
                     else //If HP < 0 kills you and you lose the game.
                     {
                         Cursor.lockState = CursorLockMode.None;
-                        MenuLoader.GoToMenu(MenuName.Lose);
+                        MenuBehavior.EnableMenu(MenuBehavior.ReturnMenuGameObject("LoseMenu")); 
                     }
                 }
                 break;
