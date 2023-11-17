@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCDialogueSystem : MonoBehaviour
 {
+    public Text dialogueText;
     // Player Detection value assigned to false
     bool playerDetection = false;
+
+    void Start()
+    {
+        dialogueText.gameObject.SetActive(false);
+    }
 
     // Start is called before the first frame update
     // Update is called once per frame
@@ -15,8 +22,12 @@ public class NPCDialogueSystem : MonoBehaviour
         // Then Dialogue print statement in console is shown for now
        if(playerDetection)
        {
-        print("Dialogue Started!");
+        dialogueText.text = "Hey Traveler!";
        } 
+       else 
+       {
+        dialogueText.text = "";
+       }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,11 +36,13 @@ public class NPCDialogueSystem : MonoBehaviour
         if(other.tag == "Player")
         {
             playerDetection = true;
+            dialogueText.gameObject.SetActive(true);
         }
     }
         private void OnTriggerExit(Collider other)
     {
         // Player Detection is set to false when left range
             playerDetection = false;
+            dialogueText.gameObject.SetActive(false);
     }
 }
