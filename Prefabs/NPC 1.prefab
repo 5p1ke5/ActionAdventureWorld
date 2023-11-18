@@ -118,6 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758fe4ad25d90564c9c81d9bf65d1c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textTimeIncrement: 3
+  texts:
+  - Hello traveller!
   dialogueText: {fileID: 3741292698494145341}
 --- !u!1 &3859267175803446455
 GameObject:
@@ -268,13 +271,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1404365893910463043, guid: 4881f9887a4517641be3abf7d85c7411,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404365893910463043, guid: 4881f9887a4517641be3abf7d85c7411,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404365893910463043, guid: 4881f9887a4517641be3abf7d85c7411,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.83
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1404365893910463043, guid: 4881f9887a4517641be3abf7d85c7411,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643817312665538897, guid: 4881f9887a4517641be3abf7d85c7411,
         type: 3}
@@ -385,6 +398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713492588346390803, guid: 4881f9887a4517641be3abf7d85c7411,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
