@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class NPCDialogueSystem : MonoBehaviour
 {
+    public string text = "Hello traveller!";
+
     public Text dialogueText;
     // Player Detection value assigned to false
     bool playerDetection = false;
@@ -13,20 +15,18 @@ public class NPCDialogueSystem : MonoBehaviour
     {
         dialogueText.gameObject.SetActive(false);
     }
-
-    // Start is called before the first frame update
-    // Update is called once per frame
+    
     void Update()
     {
         // If statement so if player is in the detection range and presses F on NPC
         // Then Dialogue print statement in console is shown for now
        if(playerDetection)
        {
-        dialogueText.text = "Hey Traveler!";
+            dialogueText.text = text;
        } 
        else 
        {
-        dialogueText.text = "";
+            dialogueText.text = "";
        }
     }
 
