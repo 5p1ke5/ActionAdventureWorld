@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Cameras;
 
 public class NPCDialogueSystem : MonoBehaviour
 {
@@ -29,9 +30,7 @@ public class NPCDialogueSystem : MonoBehaviour
     
     void Update()
     {
-        // If statement so if player is in the detection range and presses F on NPC
-        // Then Dialogue print statement in console is shown for now
-       if(playerDetection)
+        if (playerDetection)
        {
             dialogueText.text = texts[textIndex];
 
@@ -40,11 +39,13 @@ public class NPCDialogueSystem : MonoBehaviour
             {
                 textTimer -= Time.deltaTime;
             }
+            //If timer finishes counting down increments index, resets timer.
             else
             {
                 textIndex++;
                 if (textIndex >= texts.Length)
                 {
+                    //If index reaches the end of the texts array resets it to 0.
                     textIndex = 0;
                 }
 

@@ -1974,24 +1974,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920514214}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &926569980 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8987606061436781951, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-    type: 3}
-  m_PrefabInstance: {fileID: 2131188434}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &926569984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926569980}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b576f932d864a47ac08262da7e0fab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &928990324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,99 +5199,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741292698494145341, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3859267175803446455, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    - target: {fileID: 6375542241696819309, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375542241696819309, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375542241696819309, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375542241696819309, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226135145337587117, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: text
-      value: team 5 rules
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: textsNum
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: text.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: texts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: textTimeIncrement
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: 'text.Array.data[0]'
-      value: Hello!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: 'text.Array.data[1]'
-      value: Traveller!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: 'texts.Array.data[0]'
-      value: Hello traveller!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: 'texts.Array.data[1]'
-      value: How are you?
-      objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: 'texts.Array.data[2]'
-      value: How are you!!
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8987606061436781951, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 926569984}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a705ca9ce427d3419e95bd101da6ac4, type: 3}
 --- !u!1 &2137023686
 GameObject:
@@ -5477,6 +5375,11 @@ PrefabInstance:
     - target: {fileID: 2761496106844510766, guid: e4c2afb936ea94107b9c391fece9458b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125478758288595131, guid: e4c2afb936ea94107b9c391fece9458b,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9000411354051687394, guid: e4c2afb936ea94107b9c391fece9458b,
