@@ -5204,11 +5204,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
-        type: 3}
-      propertyPath: text
-      value: team 5 rules
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5380,6 +5375,11 @@ PrefabInstance:
     - target: {fileID: 2761496106844510766, guid: e4c2afb936ea94107b9c391fece9458b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125478758288595131, guid: e4c2afb936ea94107b9c391fece9458b,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9000411354051687394, guid: e4c2afb936ea94107b9c391fece9458b,
