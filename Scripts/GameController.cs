@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
+
     public GameObject menuTreeGameObject;
     // public static MenuBehavior menuBehavior;
     // Start is called before the first frame update
