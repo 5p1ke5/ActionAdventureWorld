@@ -4665,7 +4665,7 @@ GameObject:
   - component: {fileID: 795497118}
   - component: {fileID: 795497117}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5471,8 +5471,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
+      propertyPath: texts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
+        type: 3}
       propertyPath: 'texts.Array.data[0]'
-      value: Don't mind me I'm waiting for my senpai.
+      value: I saw the mayor going into the night club. No wonder a sus guy like
+        him would hang out in that shady place.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
+        type: 3}
+      propertyPath: 'texts.Array.data[1]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8999148316089892277, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
@@ -11812,8 +11823,8 @@ PrefabInstance:
     - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
       propertyPath: 'texts.Array.data[0]'
-      value: I was at the club earlier. The mayor wouldn't shut up about his magic
-        crystal!
+      value: Team 5 is the best developer group in the industry right now! Truly
+        a dream team.
       objectReference: {fileID: 0}
     - target: {fileID: 8999148316089892277, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
@@ -14506,7 +14517,7 @@ PrefabInstance:
     - target: {fileID: 8848097065817339827, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
       propertyPath: 'texts.Array.data[0]'
-      value: Oh I sure love to go the park and feed the birds.
+      value: Ever since the Mayor got that Magic Crystal the city's gone to the dogs!
       objectReference: {fileID: 0}
     - target: {fileID: 8999148316089892277, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
