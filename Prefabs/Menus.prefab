@@ -3151,7 +3151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4216612777101613656}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Menus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3953,6 +3953,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RespondToButtonClicks
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479111069467616795, guid: 87d5c49270bf70f4c8b7596dd32a55cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

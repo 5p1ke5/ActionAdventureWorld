@@ -6,47 +6,55 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
+
+
     public GameObject menuTreeGameObject;
-   // public static MenuBehavior menuBehavior;
-    // Start is called before the first frame update
+    // public static MenuBehavior menuBehavior;
+
+    private bool startHasBeenCalled;
+
     private void Start()
     {
-        //Debug.Log("gamecontroller timescale is: " + (Time.timeScale == 1 ? 1 : 0));
-
-        
-      
         MenuBehavior.menuTree = menuTreeGameObject;
-        string currentScene = SceneManager.GetActiveScene().name;
 
-        switch (currentScene)
-        {
-            case "Game":
-
-                //this right here is tweaking for some reason it has to do with update i believe because if i do the exact same thing in update this works
-
-                //GameObject startMenu = MenuBehavior.ReturnMenuGameObject("StartMenu");
-                //MenuBehavior.ToggleMenu(startMenu);
-
-                Debug.Log("scene is: " + currentScene);
-                break;
-            case "CityLevel":
-                Debug.Log("scene is: " +currentScene);
-                break;
-            case "IceLevel":
-                Debug.Log("scene is: " + currentScene);
-                break;
-            case "ScoccerLevel":
-                Debug.Log("scene is: " + currentScene);
-                break;
-            case "WaterLevel":
-                Debug.Log("scene is: " + currentScene);
-                break;
-        }
-        
+        startHasBeenCalled = true; 
 
     }
 
+    private void OnGUI()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (startHasBeenCalled)
+        {
+
+            switch (currentScene)
+            {
+                case "Game":
+
+                    //this right here is tweaking for some reason it has to do with update i believe because if i do the exact same thing in update this works
+                    GameObject startMenu = MenuBehavior.ReturnMenuGameObject("StartMenu");
+                    MenuBehavior.EnableMenu(startMenu);
+                    break;
+                case "CityLevel":
+                    break;
+                case "IceLevel":
+                    break;
+                case "SoccerLevel":
+                    break;
+                case "WaterLevel":
+                    break;
+            }
+            startHasBeenCalled = false;
+
+
+        }
+
+
+    }
     // Update is called once per frame
+
+
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape)&& Time.timeScale ==1)

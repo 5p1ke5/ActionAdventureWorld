@@ -5,15 +5,6 @@ using UnityEngine;
 public class MenuBehavior : MonoBehaviour {
     public static GameObject menuTree;
 
-    //void Update()
-    //{
-    //    if (gameObject.activeSelf)
-    //    {
-    //        Time.timeScale = 0;
-    //        Cursor.lockState = CursorLockMode.None;
-    //        Cursor.visible = true;
-    //    }
-    //}
 
     public static void EnableMenu(GameObject gameObj)
     {
@@ -28,7 +19,7 @@ public class MenuBehavior : MonoBehaviour {
         Debug.Log("MenuEnable");
     }
 
-    public void DisableMenu(GameObject gameObj)
+    public static void DisableMenu(GameObject gameObj)
     {
         //        Debug.Log(MenuTree.transform.Find(CurrentMenuName).gameObject);
         //var currentMenu = MenuTree.transform.Find(CurrentMenuName).gameObject;
@@ -50,11 +41,11 @@ public class MenuBehavior : MonoBehaviour {
     public static void ToggleMenu(GameObject gameObj)
     {
 
-        //return to normal game state of mouse
+        
         Time.timeScale = (Time.timeScale == 1) ? 0 : 1;
 
 
-
+        //return to normal game state of mouse
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -72,8 +63,8 @@ public class MenuBehavior : MonoBehaviour {
     }
     public static GameObject ReturnMenuGameObject(string menuElement)
     {
-        Debug.Log("returnGaembject");
-        Debug.Log(ReturnMenuTree());
+        //Debug.Log("returnGaembject");
+        //Debug.Log(ReturnMenuTree());
         return menuTree.transform.Find(menuElement).gameObject;
 
     }

@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuTreeGameObject: {fileID: 7658812971576868484}
-  menuBehavior: {fileID: 0}
 --- !u!1 &4420713880825677822
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1683, y: 960}
+  m_AnchoredPosition: {x: -1683, y: 731}
   m_SizeDelta: {x: 274.33, y: 103.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7402368747992464182
