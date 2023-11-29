@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 startSlide;
     public float slideFriction = 0.1f;
     public bool onIce = false;
+    private bool iceJump = false;
 
     private void Start()
     {
@@ -55,15 +56,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         grounded = controller.isGrounded;
+        if (grounded) { iceJump = false; }
+        if (iceJump) { controller.Move(startSlide); }
 
         //Being in an attacking state locks you out of some stuff.
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
         {
-            if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f)  )
+            if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f) && !iceJump )
             {
                 controller.Move(startSlide);
                 jumpHeight = 0.75f;
-            } else {
+            } else if(!iceJump) {
                 jumpHeight = initialJumpHeight;
                 //If the run button is held down multiplies movement speed by run mod.
                 int running = Input.GetButton("Fire3") ? runMod : 1;
@@ -82,8 +85,11 @@ public class PlayerController : MonoBehaviour
             //Initial button press makes the player jump if they're grounded (can add in a double jump or something later)
             if (Input.GetButtonDown("Jump"))
             {
-                if (grounded)
+                if (grounded && !onIce)
                 {
+                    physics.velocity.y = Mathf.Sqrt(jumpHeight * -1f * physics.gravityValue);
+                } else if (grounded && onIce) {
+                    iceJump = true;
                     physics.velocity.y = Mathf.Sqrt(jumpHeight * -1f * physics.gravityValue);
                 }
             }
