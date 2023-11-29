@@ -33,6 +33,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPos;
     private int minY = -30;
 
+    //variables needed for Ice sliding
+    private float initialJumpHeight;
+    private Vector3 startSlide;
+    public float slideFriction = 0.1f;
+    public bool onIce = false;
+
     private void Start()
     {
         //Getting components
@@ -43,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         //Set start position.
         startPos = transform.position;
+        initialJumpHeight = jumpHeight;
     }
 
     void Update()
@@ -52,15 +59,25 @@ public class PlayerController : MonoBehaviour
         //Being in an attacking state locks you out of some stuff.
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
         {
-            //If the run button is held down multiplies movement speed by run mod.
-            int running = Input.GetButton("Fire3") ? runMod : 1;
+            if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f)  )
+            {
+                controller.Move(startSlide);
+                jumpHeight = 0.75f;
+            } else {
+                jumpHeight = initialJumpHeight;
+                //If the run button is held down multiplies movement speed by run mod.
+                int running = Input.GetButton("Fire3") ? runMod : 1;
 
-            //Gets vertical and horizontal controller axes and multiplies them by the transforms axes to get two vectors, then uses those vectors to move the object.
-            Vector3 vertical = transform.forward * Input.GetAxis("Vertical") * playerSpeed * running * Time.deltaTime;
-            Vector3 horizontal = transform.right * Input.GetAxis("Horizontal") * playerSpeed * running * Time.deltaTime;
-            Vector3 vector = vertical + horizontal;
+                //Gets vertical and horizontal controller axes and multiplies them by the transforms axes to get two vectors, then uses those vectors to move the object.
+                Vector3 vertical = transform.forward * Input.GetAxis("Vertical") * playerSpeed * running * Time.deltaTime;
+                Vector3 horizontal = transform.right * Input.GetAxis("Horizontal") * playerSpeed * running * Time.deltaTime;
 
-            controller.Move(vector);
+                Vector3 vector = vertical + horizontal;
+
+                startSlide = vector;
+
+                controller.Move(vector);
+            }
 
             //Initial button press makes the player jump if they're grounded (can add in a double jump or something later)
             if (Input.GetButtonDown("Jump"))
