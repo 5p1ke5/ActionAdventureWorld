@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f) && !iceJump )
             {
                 controller.Move(startSlide);
-                jumpHeight = 0.75f;
+                jumpHeight = 2f;
             } else if(!iceJump) {
                 jumpHeight = initialJumpHeight;
                 //If the run button is held down multiplies movement speed by run mod.
