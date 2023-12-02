@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.56098366, g: 0.73223305, b: 0.9760755, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1741,6 +1741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MayorA
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759938357762939030, guid: 6a705ca9ce427d3419e95bd101da6ac4,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8226135145337587117, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
@@ -4098,7 +4103,7 @@ SpriteRenderer:
   m_Size: {x: 0.36, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &563334820
@@ -10843,7 +10848,7 @@ SpriteRenderer:
   m_Size: {x: 0.36, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1541329824
@@ -14130,6 +14135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Todd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759938357762939030, guid: 6a705ca9ce427d3419e95bd101da6ac4,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8226135145337587117, guid: 6a705ca9ce427d3419e95bd101da6ac4,
         type: 3}
