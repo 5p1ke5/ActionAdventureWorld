@@ -10,7 +10,7 @@ public static class Globals
     public static Vector3 spawnPos = new Vector3(0, 0, 0);
     public static int playerMaxHP = 3;
     public static int playerHP = playerMaxHP;
-
+    public static Boolean[] crystalsCollected = { false, false, false, false };
     #endregion
 
     #region story flags

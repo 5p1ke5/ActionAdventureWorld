@@ -9,12 +9,14 @@ public class PlayerHitbox : Hitbox
     private PlatformerPhysics physics;
     private AudioSource audioSource;
     public TextMeshProUGUI lifeScore;
+    private PlayerController playerController;
 
     private void Start()
     {
         base.Start();
         physics = GetComponent<PlatformerPhysics>();
         audioSource = GetComponent<AudioSource>();
+        playerController = GetComponent<PlayerController>();
         lifeScore.text = "Life: " + hp;
     }
 
@@ -45,8 +47,22 @@ public class PlayerHitbox : Hitbox
                     }
                 }
                 break;
+            case "IceCollider":
+                playerController.onIce = true;
+                break;
             default:
                 break;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "IceCollider":
+                playerController.onIce = false;
+                break;
+            default: break;
         }
     }
 }
