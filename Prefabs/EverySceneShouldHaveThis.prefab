@@ -740,6 +740,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HandleRetryButtonOnClickEvent
       objectReference: {fileID: 0}
+    - target: {fileID: 8900566036502944400, guid: a92f611766d2347b390cfec03a8e0054,
+        type: 3}
+      propertyPath: m_text
+      value: Action Adventure World
+      objectReference: {fileID: 0}
     - target: {fileID: 8908885147033212053, guid: a92f611766d2347b390cfec03a8e0054,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
