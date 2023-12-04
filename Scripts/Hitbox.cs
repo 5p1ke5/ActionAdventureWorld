@@ -37,7 +37,7 @@ abstract public class Hitbox : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log("Bounce");
         switch (other.gameObject.tag)
         {
             case "Spring":

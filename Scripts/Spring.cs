@@ -18,6 +18,7 @@ public class Spring : MonoBehaviour
 
     public void Bounce()
     {
+        Debug.Log("Bounced!");
         if (animator != null) 
         {
             animator.SetTrigger("Bounce");
