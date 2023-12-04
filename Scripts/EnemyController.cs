@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
-public class SlimeController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 2f;
     public float detectRadius = 10f;

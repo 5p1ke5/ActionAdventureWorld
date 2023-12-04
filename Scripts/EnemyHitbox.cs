@@ -23,7 +23,8 @@ public class EnemyCollision : Hitbox
                 if (flicker <= 0)
                 {
                     hp--;
-                    audioSource.PlayOneShot(audioSource.clip);
+                    //audioSource.PlayOneShot(audioSource.clip);
+                    AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
 
                     if (hp > 0)
                     {
@@ -40,5 +41,15 @@ public class EnemyCollision : Hitbox
             default:
                 break;
         }
+    }
+
+    private void StartDie()
+    {
+
+    }
+
+    private void Die()
+    {
+
     }
 }
