@@ -22,6 +22,7 @@ public class PlayerHitbox : Hitbox
 
     private void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
         //Different collision types are handled here.
         switch (other.gameObject.tag)
         {
