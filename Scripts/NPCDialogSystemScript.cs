@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class NPCDialogSystemScript : MonoBehaviour
 {
+
+    public TextMesh text;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SphereCollider sc = gameObject.AddComponent(typeof(SphereCollider)) as SphereCollider;
+        sc.radius = 6;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    //in like a game controller script say if tag == "npc" then check if it hits the collider
 }
