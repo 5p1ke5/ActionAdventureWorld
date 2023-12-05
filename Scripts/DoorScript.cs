@@ -11,17 +11,29 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private bool close = false;
 
     private bool isEPressed = false;
+    private bool colliding = false;
 
     void Update()
     {
-        isEPressed = Input.GetKey(KeyCode.E);
+        if (!isEPressed && colliding == true)
+        {
+            isEPressed = Input.GetMouseButtonDown(0);
+        }
+        if (colliding == false)
+        {
+            isEPressed = false;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
+        colliding = true;
+        Debug.Log("OnTriggerStay: " + isEPressed);
         if (isEPressed)
         {
+            Debug.Log("Clicked");
             if (open)
             {
+                Debug.Log("Door Open");
                 doorAnimator.Play("doorOpen", 0, 0.0f);
                 leverAnimator.Play("LeverUp", 0, 0.0f);
                 gameObject.SetActive(false);
@@ -33,6 +45,11 @@ public class NewBehaviourScript : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        colliding = false;
     }
 
 }

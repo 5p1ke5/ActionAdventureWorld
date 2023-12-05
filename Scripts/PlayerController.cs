@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public float slideFriction = 0.1f;
     public bool onIce = false;
     private bool iceJump = false;
+    private bool landJump = false;
 
     private void Start()
     {
@@ -56,16 +57,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         grounded = controller.isGrounded;
-        if (grounded) { iceJump = false; }
+        if (grounded) { iceJump = false; landJump = false; }
         if (iceJump) { controller.Move(startSlide); }
 
         //Being in an attacking state locks you out of some stuff.
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
         {
-            if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f) && !iceJump )
+            if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f) && !iceJump && !landJump)
             {
                 controller.Move(startSlide);
-                jumpHeight = 2f;
+                jumpHeight = 3f;
             } else if(!iceJump) {
                 jumpHeight = initialJumpHeight;
                 //If the run button is held down multiplies movement speed by run mod.
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (grounded && !onIce)
                 {
+                    landJump = true;
                     physics.velocity.y = Mathf.Sqrt(jumpHeight * -1f * physics.gravityValue);
                 } else if (grounded && onIce) {
                     iceJump = true;
