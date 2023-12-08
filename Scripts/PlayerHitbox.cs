@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerHitbox : Hitbox
 {
+    public Text lifeScore;
     private PlatformerPhysics physics;
     private AudioSource audioSource;
-    public TextMeshProUGUI lifeScore;
+
     private PlayerController playerController;
 
     private void Start()

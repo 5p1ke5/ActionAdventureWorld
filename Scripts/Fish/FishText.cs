@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class FishText : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class FishText : MonoBehaviour
 
     public static int fishCollected;
     int fishSpawned;
-    private TMP_Text fishComp;
+    private Text fishComp;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +20,7 @@ public class FishText : MonoBehaviour
 
 
         fishSpawned = GetComponent<FishSpawner>().ReturnFishToSpawn();
-        fishComp = fishLeftGO.GetComponent<TMP_Text>();
+        fishComp = fishLeftGO.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -31,8 +30,7 @@ public class FishText : MonoBehaviour
 
         int fishCollectedCalc = ((fishSpawned - fishCollected) % fishSpawned);
 
-
-        fishComp.SetText(fishCollectedTextPrefix + fishCollectedCalc + "/" + fishSpawned);
+        fishComp.text = fishCollectedTextPrefix + fishCollectedCalc + "/" + fishSpawned;
 
     }
 }
