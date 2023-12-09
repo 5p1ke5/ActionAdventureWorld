@@ -10,8 +10,6 @@ public class Billboard : MonoBehaviour
     {
  
             transform.LookAt(Camera.main.transform.position, Vector3.up);
-        Debug.Log("Camera pos " +Camera.main.transform.position + "\nVector3.up" + Vector3.up);
-
         
      
     }
