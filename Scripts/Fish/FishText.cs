@@ -31,17 +31,22 @@ public class FishText : MonoBehaviour
     {
 
 
-        int fishCollectedCalc = (fishSpawned - fishCollected);
-
-        if(fishCollectedCalc == fishSpawned)
+        int fishCollectedCalc;
+       
+        if (fishCollected == 0)
         {
             fishCollectedCalc = 0;
-        }else if(fishCollected == 0)
+        }else if(fishCollected == fishSpawned)
         {
+            
             fishCollectedCalc = fishSpawned;
         }
+        else
+        {
+            fishCollectedCalc = (fishSpawned - fishCollected);
+        }
 
-     
+        
         fishComp.text = fishCollectedTextPrefix + fishCollectedCalc + "/" + fishSpawned;
 
 
