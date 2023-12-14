@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GreatPortal : MonoBehaviour
 {
+    private bool open = false;
     void Start()
     {
         int crystalsGot = 0;
@@ -19,6 +21,18 @@ public class GreatPortal : MonoBehaviour
         {
             Renderer rend = GetComponent<Renderer>();
             rend.enabled = true;
+            open = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (open)
+            {
+                SceneManager.LoadScene("WinMenu");
+            }
         }
     }
 }

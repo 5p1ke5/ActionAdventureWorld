@@ -26,7 +26,6 @@ public class BubbleMechanics : MonoBehaviour
 
             physics.velocity.y += bubblespeed; 
 
-            Debug.Log(player.transform.position);
 
         }
     }
