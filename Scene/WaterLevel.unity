@@ -130972,6 +130972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishLeftGO: {fileID: 1581965388}
   crystal: {fileID: 199733800}
+  motherFishDialogSystem: {fileID: 976663280}
 --- !u!1 &1923783656
 GameObject:
   m_ObjectHideFlags: 0

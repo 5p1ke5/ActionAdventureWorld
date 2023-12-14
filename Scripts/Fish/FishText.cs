@@ -7,6 +7,7 @@ public class FishText : MonoBehaviour
 {
     public GameObject fishLeftGO; //provided via inspector
     public GameObject crystal;
+    public GameObject motherFishDialogSystem;
     const string fishCollectedTextPrefix = "Fish: ";
 
 
@@ -56,8 +57,16 @@ public class FishText : MonoBehaviour
 
         if (allfishcollected)
         {
+           //NPCDialogueSystem motherFishNPCDS = motherFishDialogSystem.GetComponent<NPCDialogueSystem>();
+
+           // string[] newStrringarr = {"Thank you for saving my kids!"};
+            
+           //     motherFishNPCDS.texts = newStrringarr;
+      
+            
             crystal.SetActive(true);
             allfishcollected = false;
+
         }
     }
 }

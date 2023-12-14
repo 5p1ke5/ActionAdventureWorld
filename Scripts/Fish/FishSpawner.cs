@@ -46,7 +46,7 @@ public class FishSpawner : MonoBehaviour
         xSpawnRangeHi = tempFloorMeshRenderer.bounds.max.x;
 
         ySpawnRangeLo = tempFloorMeshRenderer.bounds.min.y + 2;
-        ySpawnRangeHi = tempFloorMeshRenderer.bounds.max.y + 4;
+        ySpawnRangeHi = tempFloorMeshRenderer.bounds.max.y + 3;
 
         zSpawnRangeLo = tempFloorMeshRenderer.bounds.min.z;
         zSpawnRangeHi = tempFloorMeshRenderer.bounds.max.z;
