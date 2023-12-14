@@ -31,31 +31,28 @@ public class FishText : MonoBehaviour
     {
 
 
-        int fishCollectedCalc;
-       
-        if (fishCollected == 0)
+        int fishCollectedCalc =-1;
+        
+      
+       if (fishCollected == fishSpawned)
         {
+
             fishCollectedCalc = 0;
-        }else if(fishCollected == fishSpawned)
-        {
-            
-            fishCollectedCalc = fishSpawned;
         }
-        else
+       else if (fishCollected == 0)
+            {
+                fishCollectedCalc = fishSpawned;
+                allfishcollected = true;
+            }
+            else
         {
             fishCollectedCalc = (fishSpawned - fishCollected);
         }
 
-        
+        Debug.Log(fishCollected);
         fishComp.text = fishCollectedTextPrefix + fishCollectedCalc + "/" + fishSpawned;
 
 
-
-
-        if(fishCollectedCalc == fishSpawned)
-        {
-            allfishcollected = true;
-        }
 
         if (allfishcollected)
         {

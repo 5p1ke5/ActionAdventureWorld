@@ -10,6 +10,8 @@ public class Fish : MonoBehaviour
     void Start()
     {
         Fish.fishInScene++;
+        fishCollected = Fish.fishInScene;
+        FishText.fishCollected = fishCollected;
     }
     private void OnTriggerEnter(Collider other)
     {

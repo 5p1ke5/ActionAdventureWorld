@@ -35044,6 +35044,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8598011973a1045f8a5166c9aae41b2a, type: 3}
+--- !u!1 &199733800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054412940804153112, guid: a9246d54bc3ad14439e3dc6f0b789904,
+    type: 3}
+  m_PrefabInstance: {fileID: 1024603385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &217102946
 GameObject:
   m_ObjectHideFlags: 0
@@ -130965,7 +130971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishLeftGO: {fileID: 1581965388}
-  crystal: {fileID: 0}
+  crystal: {fileID: 199733800}
 --- !u!1 &1923783656
 GameObject:
   m_ObjectHideFlags: 0
