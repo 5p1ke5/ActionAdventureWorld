@@ -19440,9 +19440,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1280496384961268684, guid: 86d2c12f1eea46246b4ee7dc54d16625,
         type: 3}
+      propertyPath: hp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280496384961268684, guid: 86d2c12f1eea46246b4ee7dc54d16625,
+        type: 3}
       propertyPath: lifeScore
       value: 
       objectReference: {fileID: 472974445}
+    - target: {fileID: 1433547167232586503, guid: 86d2c12f1eea46246b4ee7dc54d16625,
+        type: 3}
+      propertyPath: hp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1433547167232586503, guid: 86d2c12f1eea46246b4ee7dc54d16625,
         type: 3}
       propertyPath: jumpHeight
