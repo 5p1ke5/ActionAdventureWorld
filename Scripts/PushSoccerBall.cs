@@ -8,6 +8,9 @@ public class SoccerBall : MonoBehaviour
     public float kickRange = 5f; // Adjust the kick range as needed
     private GameObject respawnPoint;
     private SoccerFieldManager soccerFieldManager;
+    private GameObject aiPlayer; // Reference to the AI player
+    public AudioClip kickSound; // Reference to your kick sound
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -22,6 +25,15 @@ public class SoccerBall : MonoBehaviour
 
         // Find the SoccerGameManager in the scene
         soccerFieldManager = FindObjectOfType<SoccerFieldManager>();
+
+        // Find the AI player by tag
+        aiPlayer = GameObject.FindGameObjectWithTag("AIPlayer");
+
+        // Get the AudioSource component from the same GameObject
+        audioSource = GetComponent<AudioSource>();
+
+        // Set the audio clip
+        audioSource.clip = kickSound;
     }
 
     void Update()
@@ -67,6 +79,9 @@ public class SoccerBall : MonoBehaviour
 
             // Apply force to the ball
             ballRb.AddForce(forceDirection * kickForce, ForceMode.Impulse);
+
+            // Play the kick sound
+            audioSource.Play();
         }
     }
 
@@ -76,13 +91,13 @@ public class SoccerBall : MonoBehaviour
         if (other.CompareTag("GoalPostHome"))
         {
             Debug.Log("Goal! You scored a point for Home!");
-          soccerFieldManager.IncrementHomeScore(); // Increment the home score
+            soccerFieldManager.IncrementHomeScore(); // Increment the home score
             RespawnBall();
         }
         else if (other.CompareTag("GoalPostAway"))
         {
             Debug.Log("Goal! You scored a point for Away!");
-          soccerFieldManager.IncrementAwayScore(); // Increment the away score
+            soccerFieldManager.IncrementAwayScore(); // Increment the away score
             RespawnBall();
         }
         else if (other.CompareTag("BallGone"))
@@ -102,6 +117,25 @@ public class SoccerBall : MonoBehaviour
         {
             ballRb.velocity = Vector3.zero;
             ballRb.angularVelocity = Vector3.zero;
+        }
+
+        // Respawn AI player at the AIRespawn tag
+        if (aiPlayer != null)
+        {
+            GameObject aiRespawnPoint = GameObject.FindGameObjectWithTag("AIRespawn");
+
+            if (aiRespawnPoint != null)
+            {
+                aiPlayer.transform.position = aiRespawnPoint.transform.position;
+            }
+            else
+            {
+                Debug.LogError("AIRespawn point not found!");
+            }
+        }
+        else
+        {
+            Debug.LogError("AI player not found!");
         }
     }
 }

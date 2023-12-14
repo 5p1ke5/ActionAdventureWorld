@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +6,7 @@ public class SoccerFieldManager : MonoBehaviour
 {
     public Text HomeScoreText;
     public Text AwayScoreText;
+    public GameObject magicCrystal;
 
     private int homeScore = 0;
     private int awayScore = 0;
@@ -51,6 +51,8 @@ public class SoccerFieldManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             FieldDetect = false;
+            // Reset scores when the player leaves the field
+            ResetScores();
         }
     }
 
@@ -77,20 +79,41 @@ public class SoccerFieldManager : MonoBehaviour
         AwayScoreText.text = "Away: " + awayScore;
     }
 
-    // checkforwin can be used so player hits certain score and crystal spawns
-        private void CheckForWin()
+    // Method to reset scores
+    private void ResetScores()
+    {
+        homeScore = 0;
+        awayScore = 0;
+        UpdateScoreText();
+    }
+
+    // Method to check if the player is in the field
+    public bool IsPlayerInField()
+    {
+        return FieldDetect;
+    }
+
+    // Method to check for win
+    private void CheckForWin()
     {
         int winningScore = 5; // winning score
 
         if (homeScore >= winningScore)
         {
-            Debug.Log("Home team wins!");
+            ResetScores();
             // Display any additional win-related actions or messages
         }
         else if (awayScore >= winningScore)
         {
-            Debug.Log("Away team wins!");
             // Display any additional win-related actions or messages
+            EnableMagicCrystal();
         }
     }
+private void EnableMagicCrystal()
+{
+    if (magicCrystal != null)
+    {
+        magicCrystal.SetActive(true);
+    }
+}
 }
