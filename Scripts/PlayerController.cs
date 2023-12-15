@@ -65,9 +65,7 @@ public class PlayerController : MonoBehaviour
             if(onIce && (Math.Abs(startSlide.x) > 0.015f || Math.Abs(startSlide.y) > 0.015f || Math.Abs(startSlide.z) > 0.015f) && !iceJump && !landJump)
             {
                 controller.Move(startSlide);
-                jumpHeight = 3f;
             } else if(!iceJump) {
-                jumpHeight = initialJumpHeight;
                 //If the run button is held down multiplies movement speed by run mod.
                 int running = Input.GetButton("Fire3") ? runMod : 1;
 
